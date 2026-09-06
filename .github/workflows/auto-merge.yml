@@ -6,7 +6,7 @@ permissions:
   pull-requests: write
 
 jobs:
-  dependabot:
+  merger:
     runs-on: ubuntu-latest
     if: ${{ github.actor == 'exercism-solutions-syncer[bot]' }}
     steps:
@@ -14,3 +14,4 @@ jobs:
         run: gh pr merge --auto --rebase "$PR_URL"
         env:
           PR_URL: ${{ github.event.pull_request.html_url }}
+          GH_TOKEN: ${{ github.token }}
